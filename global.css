@@ -1,0 +1,119 @@
+body {
+    font: 100%/1.5 system-ui, sans-serif;
+    display: flex;
+    flex-flow: column;
+    max-width: 80em;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 1em;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  header h1 {
+    margin: 0;
+  }
+
+  header label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 300px;
+  }
+
+  header input[type="range"] {
+    width: 100%;
+    margin: 0.5em 0;
+  }
+
+  header time, header em {
+    display: block;
+    margin-top: 0.25em;
+  }
+
+  header em {
+    color: #666;
+    font-style: italic;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+  }
+
+  #map svg {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* Shared color variables */
+  #map svg circle,
+  .legend-item {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+  }
+
+  #map svg circle {
+    pointer-events: auto;
+    fill: var(--color);
+  }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin-block: 1em;
+    padding: 0.5em;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .legend-title {
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .legend-item::before {
+    content: "";
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-radius: 2px;
+    background: var(--color);
+  }
